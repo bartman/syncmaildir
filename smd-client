@@ -4,6 +4,7 @@
 -- No warranties.
 -- Copyright 2009 Enrico Tassi <gares@fettunta.org>
 
+package.path = '@PREFIX@/share/lua/5.1/?.lua;' .. package.path
 require 'syncmaildir'
 
 -- export syncmaildir to the global namespace
