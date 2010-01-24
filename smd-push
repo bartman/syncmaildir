@@ -22,6 +22,10 @@ fi
 # to the home
 cd
 
+PRESCRIPT=~/.smd/pre-push-$REPNAME
+POSTSCRIPT=~/.smd/post-push-$REPNAME
+[ -x $PRESCRIPT ] && $PRESCRIPT push $REPNAME
+
 ($MITM $CtS > $LtS) < $CtL &
 LOGGER1=$!
 
@@ -69,5 +73,7 @@ if [ $SHOWTAGS = 1 ]; then
 	fi
 
 fi
+
+[ -x $POSTSCRIPT ] && $POSTSCRIPT push $REPNAME
 
 exit $EXITCODE

@@ -22,6 +22,10 @@ fi
 # to the home
 cd
 
+PRESCRIPT=~/.smd/pre-pull-$REPNAME
+POSTSCRIPT=~/.smd/post-pull-$REPNAME
+[ -x $PRESCRIPT ] && $PRESCRIPT pull $REPNAME
+
 ($MITM $CtS > $LtS) < $CtL &
 LOGGER1=$!
 
@@ -68,5 +72,7 @@ if [ $SHOWTAGS = 1 ]; then
 		echo "$REPNAME: smd-server@$SERVERNAME: TAGS: error::context(ssh) probable-cause(network) human-intervention(avoidable) suggested-actions(retry)"
 	fi
 fi
+
+[ -x $POSTSCRIPT ] && $POSTSCRIPT pull $REPNAME
 
 exit $EXITCODE
