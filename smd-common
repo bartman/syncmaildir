@@ -9,8 +9,8 @@ if [ `echo $PREFIX | cut -c -1` = "@" ]; then
 else
 	SMDSERVER=$PREFIX/bin/smd-server 
 	SMDCLIENT=$PREFIX/bin/smd-client 
-	REMOTESMDSERVER="$SMDSERVER"
-	REMOTESMDCLIENT="$SMDCLIENT"
+	REMOTESMDSERVER=smd-server
+	REMOTESMDCLIENT=smd-client
 fi
 
 H=$HOME
